@@ -1,0 +1,353 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at top left, #C97A3E 0%, #6B3A2E 22%, #3A2E52 50%, #241D38 100%);
+  background-attachment: fixed;
+  display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+ .login-wrapper,
+.login-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.login-wrapper {
+  --blob-1-color: #ff5e00;
+  --blob-2-color: #7000ff;
+  --btn-hover-glow: rgba(112, 0, 255, 0.25);
+  --input-focus-glow: rgba(112, 0, 255, 0.15);
+  position: relative;
+  animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes floatUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card {
+  position: relative;
+  width: 360px; /* Thori si width adjust ki hai taake Google button fit aa jaye */
+  background-color: #0d0f14;
+  border-radius: 24px;
+  padding: 28px 24px; /* Padding kam ki hai taake height zyada lambi na ho */
+  overflow: hidden;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.login-wrapper:hover .login-card {
+  transform: translateY(-6px);
+  box-shadow:
+    0 32px 64px rgba(0, 0, 0, 0.3),
+    0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.glow-blob {
+  position: absolute;
+  filter: blur(45px);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.6;
+  animation: pulseGlow 4s infinite alternate ease-in-out;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.login-wrapper:hover .glow-blob {
+  opacity: 0.75;
+  filter: blur(40px);
+}
+
+.blob-1 {
+  top: -30px;
+  right: -30px;
+  width: 170px;
+  height: 170px;
+  background: var(--blob-1-color);
+}
+
+.blob-2 {
+  bottom: -50px;
+  left: -50px;
+  width: 210px;
+  height: 210px;
+  background: var(--blob-2-color);
+  animation-delay: -2s;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+.dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(5, 5, 8, 0.85) 30%,
+    transparent 100%
+  );
+  z-index: 1;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border-radius: inherit;
+}
+
+.view-container {
+  position: relative;
+  z-index: 10;
+}
+
+.form-view {
+  display: flex;
+  flex-direction: column;
+  animation: fadeInView 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#signup-view {
+  display: none;
+}
+
+.reg-toggle:checked ~ .view-container #login-view {
+  display: none;
+}
+
+.reg-toggle:checked ~ .view-container #signup-view {
+  display: flex;
+}
+
+@keyframes fadeInView {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  margin-bottom: 20px; /* Gap kam kiya hai height balance karne ke liye */
+  text-align: center;
+}
+
+.decorative-dot {
+  width: 2em;
+  height: 2em;
+  margin: 0 auto 0.8em auto;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.decorative-dot::after {
+  content: "";
+  width: 1em;
+  height: 1em;
+  background-image: radial-gradient(
+    circle at center,
+    #ffffff 40%,
+    transparent 50%
+  );
+  background-size: 3.5px 3.5px;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12.5px;
+  font-weight: 400;
+}
+
+.input-group {
+  margin-bottom: 12px; /* Input spacing thori kam ki hai */
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.85em 1.1em; /* Padding compact ki hai */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-field:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 20px var(--input-focus-glow);
+  transform: translateY(-1px);
+}
+
+.forgot-link {
+  display: block;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  text-decoration: none;
+  margin-top: -2px;
+  margin-bottom: 16px;
+  transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: #ffffff;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.85em;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-submit:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--btn-hover-glow);
+}
+
+/* Google Button & Divider Styling */
+.or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 12px 0;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.or-divider span {
+  padding: 0 10px;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 0.8em;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.google-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.google-icon {
+  background: #ffffff;
+  color: #0d0f14;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.signup-prompt {
+  margin-top: 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12.5px;
+}
+
+.signup-prompt .toggle-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 4px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.signup-prompt .toggle-link:hover {
+  border-color: #ffffff;
+}
+
+.google-icon {
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  background: conic-gradient(from 180deg at 50% 50%, #4285F4 0deg, #34A853 90deg, #FBBC05 180deg, #EA4335 270deg, #4285F4 360deg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

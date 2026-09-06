@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — CodeCraft</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<!-- Google Fonts: Space Grotesk (display) + DM Sans (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page  loading-body">
+
+<!-- ============ NAVBAR (shared, with Admin Portal badge) ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+  <img src="./images/vibewrite-logo.png" alt="VibeWrite" class="brand-logo">
+      <span class="admin-tag ms-auto mt-2"><i class="bi bi-shield-lock-fill"></i>Admin Portal</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">Categories</a>
+    </nav>
+
+    <div class="search-pill">
+      <i class="bi bi-search"></i>
+      <input type="text" placeholder="Search users, blogs...">
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <!-- <button class="icon-btn d-none d-sm-flex"><i class="bi bi-bell"></i></button> -->
+     <a href="./signup.html">
+       <button class="btn-glow" id="logout">Sign out</button>
+     </a>
+      <a href="profile.html" class="icon-btn" style="background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); border: none; color:#fff; font-weight:700; font-size:0.85rem;" id="letter">RK</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <!-- ============ ADMIN OVERVIEW BANNER ============ -->
+  <div class="admin-banner">
+    <div class="admin-banner-top">
+      <div>
+        <div class="admin-welcome-eyebrow">Welcome back</div>
+        <div class="admin-welcome-name" id="username"><span class="role-chip"><i class="bi bi-shield-check"></i>Administrator</span></div>
+      </div>
+      <span style="color: var(--muted); font-size: 0.82rem;"><i class="bi bi-clock-history" id="schedule"></i> Last login: Today, 9:42 AM</span>
+    </div>
+
+    <div class="admin-overview-grid">
+      <div class="overview-stat">
+        <div class="ov-top">
+          <div class="ov-icon" style="background: linear-gradient(135deg, #7000ff, #b03bff); box-shadow: 0 0 16px rgba(112,0,255,0.4);"><i class="bi bi-people"></i></div>
+          <span class="ov-trend up"><i class="bi bi-arrow-up-short"></i>4.2%</span>
+        </div>
+        <div class="ov-value">18,204</div>
+        <div class="ov-label">Total Users</div>
+      </div>
+
+      <div class="overview-stat">
+        <div class="ov-top">
+          <div class="ov-icon" style="background: linear-gradient(135deg, #00c2c7, #0091ff); box-shadow: 0 0 16px rgba(0,194,199,0.4);"><i class="bi bi-journal-check"></i></div>
+          <span class="ov-trend up"><i class="bi bi-arrow-up-short"></i>2.8%</span>
+        </div>
+        <div class="ov-value">2,431</div>
+        <div class="ov-label">Published Blogs</div>
+      </div>
+
+      <div class="overview-stat">
+        <div class="ov-top">
+          <div class="ov-icon" style="background: linear-gradient(135deg, #ff5e00, #ff9d5c); box-shadow: 0 0 16px rgba(255,94,0,0.4);"><i class="bi bi-hourglass-split"></i></div>
+          <span class="ov-trend warn">Needs review</span>
+        </div>
+        <div class="ov-value">17</div>
+        <div class="ov-label">Pending Approvals</div>
+      </div>
+
+      <div class="overview-stat">
+        <div class="ov-top">
+          <div class="ov-icon" style="background: linear-gradient(135deg, #ff2e92, #b03bff); box-shadow: 0 0 16px rgba(255,46,146,0.4);"><i class="bi bi-eye"></i></div>
+          <span class="ov-trend up"><i class="bi bi-arrow-up-short"></i>11%</span>
+        </div>
+        <div class="ov-value">4.8M</div>
+        <div class="ov-label">Total System Views</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN TABS ============ -->
+  <div class="admin-tabs">
+    <button class="admin-tab-btn active" data-tab="pending">Pending Approvals<span class="count">17</span></button>
+    <button class="admin-tab-btn" data-tab="allblogs">All Blogs<span class="count">2,431</span></button>
+    <button class="admin-tab-btn" data-tab="users">Manage Users<span class="count">18.2k</span></button>
+  </div>
+
+  <!-- ============ PENDING APPROVALS PANEL ============ -->
+  <div class="admin-panel active" id="panel-pending">
+
+    <div class="approval-row">
+      <div class="approval-top">
+        <div class="approval-author">
+          <div class="approval-avatar grad-5">PJ</div>
+          <div>
+            <div class="approval-author-name">Priya Joshi</div>
+            <div class="approval-author-date">Submitted Aug 30, 2026 · 10:14 AM</div>
+          </div>
+        </div>
+        <span class="tag-pill">Web Dev</span>
+      </div>
+      <div class="approval-body">
+        <div class="approval-thumb grad-5"><i class="bi bi-terminal"></i></div>
+        <div>
+          <div class="approval-title">A Practical Guide to Debugging Async Race Conditions</div>
+          <div class="approval-snippet">The bugs that only show up on Tuesdays, explained with real timelines and a repeatable checklist to help teams find them faster before they hit production.</div>
+        </div>
+      </div>
+      <div class="approval-actions">
+        <button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.82rem;"><i class="bi bi-eye me-1"></i>Preview</button>
+        <div class="approval-buttons">
+          <button class="btn-reject"><i class="bi bi-x-lg me-1"></i>Reject</button>
+          <button class="btn-approve"><i class="bi bi-check-lg me-1"></i>Approve</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="approval-row">
+      <div class="approval-top">
+        <div class="approval-author">
+          <div class="approval-avatar grad-4">MT</div>
+          <div>
+            <div class="approval-author-name">Marcus Tan</div>
+            <div class="approval-author-date">Submitted Aug 29, 2026 · 6:52 PM</div>
+          </div>
+        </div>
+        <span class="tag-pill">Career</span>
+      </div>
+      <div class="approval-body">
+        <div class="approval-thumb grad-4"><i class="bi bi-briefcase"></i></div>
+        <div>
+          <div class="approval-title">Design Systems Are a Product, Not a Project</div>
+          <div class="approval-snippet">Treating your component library like a shipped product changes how teams adopt it — and who ends up owning the roadmap for it.</div>
+        </div>
+      </div>
+      <div class="approval-actions">
+        <button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.82rem;"><i class="bi bi-eye me-1"></i>Preview</button>
+        <div class="approval-buttons">
+          <button class="btn-reject"><i class="bi bi-x-lg me-1"></i>Reject</button>
+          <button class="btn-approve"><i class="bi bi-check-lg me-1"></i>Approve</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="approval-row">
+      <div class="approval-top">
+        <div class="approval-author">
+          <div class="approval-avatar grad-2">DK</div>
+          <div>
+            <div class="approval-author-name">Daniel Kim</div>
+            <div class="approval-author-date">Submitted Aug 29, 2026 · 2:05 PM</div>
+          </div>
+        </div>
+        <span class="tag-pill">Technology</span>
+      </div>
+      <div class="approval-body">
+        <div class="approval-thumb grad-2"><i class="bi bi-cpu"></i></div>
+        <div>
+          <div class="approval-title">What Edge Inference Chips Get Wrong About Latency</div>
+          <div class="approval-snippet">Benchmark numbers on spec sheets rarely match what happens once a model is actually running next to a battery and a thermal budget.</div>
+        </div>
+      </div>
+      <div class="approval-actions">
+        <button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.82rem;"><i class="bi bi-eye me-1"></i>Preview</button>
+        <div class="approval-buttons">
+          <button class="btn-reject"><i class="bi bi-x-lg me-1"></i>Reject</button>
+          <button class="btn-approve"><i class="bi bi-check-lg me-1"></i>Approve</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ ALL BLOGS PANEL (moderation) ============ -->
+  <div class="admin-panel" id="panel-allblogs">
+
+    <div class="mod-row">
+      <div class="mod-avatar grad-1">{ }</div>
+      <div class="mod-content">
+        <div class="mod-title">Why Your React App Feels Slow (And It's Not the Framework)</div>
+        <div class="mod-sub">Nadia Reyes · Web Dev · 12.4k views</div>
+      </div>
+      <span class="status-badge approved">Approved</span>
+      <div class="mod-actions">
+        <button class="btn-view">View</button>
+        <button class="btn-delete"><i class="bi bi-trash3"></i></button>
+      </div>
+    </div>
+
+    <div class="mod-row">
+      <div class="mod-avatar grad-3">Aa</div>
+      <div class="mod-content">
+        <div class="mod-title">The Case Against Perfect Symmetry in Interface Design</div>
+        <div class="mod-sub">Sofia Lang · UI/UX · 8.1k views</div>
+      </div>
+      <span class="status-badge approved">Approved</span>
+      <div class="mod-actions">
+        <button class="btn-view">View</button>
+        <button class="btn-delete"><i class="bi bi-trash3"></i></button>
+      </div>
+    </div>
+
+    <div class="mod-row">
+      <div class="mod-avatar grad-6">◆</div>
+      <div class="mod-content">
+        <div class="mod-title">Local-First Software Is Quietly Making a Comeback</div>
+        <div class="mod-sub">Elena Wu · Technology · 5.6k views</div>
+      </div>
+      <span class="status-badge approved">Approved</span>
+      <div class="mod-actions">
+        <button class="btn-view">View</button>
+        <button class="btn-delete"><i class="bi bi-trash3"></i></button>
+      </div>
+    </div>
+
+    <div class="mod-row">
+      <div class="mod-avatar grad-5"><i class="bi bi-terminal"></i></div>
+      <div class="mod-content">
+        <div class="mod-title">A Practical Guide to Debugging Async Race Conditions</div>
+        <div class="mod-sub">Priya Joshi · Web Dev · 214 views</div>
+      </div>
+      <span class="status-badge pending">Pending</span>
+      <div class="mod-actions">
+        <button class="btn-view">View</button>
+        <button class="btn-delete"><i class="bi bi-trash3"></i></button>
+      </div>
+    </div>
+
+  </div>
+
+<!-- ============ MANAGE USERS PANEL ============ -->
+ 
+  <div class="admin-panel" id="panel-users">
+    <div class="main-content" style="padding: 0; background: transparent;">
+      <header class="users-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h1 style="font-size: 1.25rem; font-weight: 600;">User Management</h1>
+        <div class="search-box" style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 0.4rem 0.9rem; min-width: 250px;">
+          <i class="bi bi-search" style="color: var(--muted);"></i>
+          <input type="text" id="searchInput" placeholder="Search users by name or email..." style="background: transparent; border: none; outline: none; color: var(--text); font-size: 0.85rem; width: 100%;">
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="card" style="background: var(--surface-solid); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; padding: 1.5rem;">
+          <table class="users-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                <th style="padding: 0.75rem 1rem;">ID</th>
+                <th style="padding: 0.75rem 1rem;">Name</th>
+                <th style="padding: 0.75rem 1rem;">Email</th>
+                <th style="padding: 0.75rem 1rem;">Role</th>
+                <th style="padding: 0.75rem 1rem;">Status</th>
+                <th style="padding: 0.75rem 1rem; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="userTableBody">
+              <!-- JavaScript se data yahan fill hoga -->
+            </tbody>
+          </table>
+
+          <div class="pagination" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; color: var(--muted); font-size: 0.85rem;">
+            <button id="prevBtn" class="btn-ghost" style="border: 1px solid var(--border); background: transparent; color: var(--text); padding: 0.35rem 0.85rem; border-radius: 8px;">Previous</button>
+            <span id="pageIndicator">Page 1</span>
+            <button id="nextBtn" class="btn-ghost" style="border: 1px solid var(--border); background: transparent; color: var(--text); padding: 0.35rem 0.85rem; border-radius: 8px;">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ FOOTER (shared) ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+       <a href="#" class="brand">
+  <img src="./images/vibewrite-logo.png" alt="VibeWrite" class="brand-logo">
+</a>
+    </div>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+      <a href="#">Categories</a>
+      <a href="#">Write for us</a>
+      <a href="#">Privacy</a>
+    </div>
+    <div class="footer-copy">© 2026 CodeCraft. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+<script type="module" src="./user.js"></script>
+<script type="module" src="./index.js"></script>
+<script type="module" src="./app.js"></script>
+
+</body>
+</html>

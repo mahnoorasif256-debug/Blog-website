@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+
+<link rel="stylesheet" href="./login.css">
+
+</head>
+<body>
+    
+
+<!-- signup form -->
+
+
+<div class="login-wrapper">
+  <div class="login-card">
+    <input
+      type="checkbox"
+      id="reg-toggle"
+      class="reg-toggle"
+      style="display: none;"
+    />
+
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="dark-overlay"></div>
+
+    <div class="view-container">
+      
+
+      <div class="form-view" id="login-view">
+        <div class="header">
+          <div class="decorative-dot"></div>
+          <div class="title">Create Account</div>
+          <p class="subtitle">Please enter your details to sign up</p>
+        </div>
+
+        <form id="signup">
+          <div class="input-group">
+            <input id="name"
+              type="text"
+              class="input-field"
+              placeholder="Your Name"
+              required
+              autocomplete="name"
+            />
+          </div>
+          <div class="input-group">
+            <input id="email"
+              type="email"
+              class="input-field"
+              placeholder="Email address"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="input-group">
+            <input id="password"
+              type="password"
+              class="input-field"
+              placeholder="Password"
+              required
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button type="submit" class="btn-submit">Sign up</button>
+
+          <div class="or-divider"><span>or</span></div>
+
+          <button type="button" class="google-btn">
+            <span class="google-icon">G</span>
+            Continue with Google
+          </button>
+        </form>
+
+        <div class="signup-prompt">
+          Already have an account?
+<a href="./login.html"><label for="reg-toggle" class="toggle-link">Sign in</label></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="module" src="./index.js"></script>
+</body>
+</html>

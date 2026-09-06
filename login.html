@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+
+<link rel="stylesheet" href="./login.css">
+            <!-- bootrap cdn  -->
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+
+</head>
+<body>
+    
+
+
+
+<!-- login page  --> 
+
+
+<div class="login-wrapper">
+  <div class="login-card">
+    <input
+      type="checkbox"
+      id="reg-toggle"
+      class="reg-toggle"
+      style="display: none;"
+    />
+
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="dark-overlay"></div>
+
+    <div class="view-container">
+      
+      <!-- Login View -->
+      <div class="form-view" id="login-view">
+        <div class="header">
+          <div class="decorative-dot"></div>
+          <div class="title">Welcome Back</div>
+          <p class="subtitle">Please enter your details to sign in.</p>
+        </div>
+
+        <form id="signin-form">
+          <div class="input-group">
+            <input id="email"
+              type="email"
+              class="input-field"
+              placeholder="Email address"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="input-group">
+            <input id="password"
+              type="password"
+              class="input-field"
+              placeholder="Password"
+              required
+              autocomplete="current-password"
+            />
+          </div>
+
+          <a href="#" class="forgot-link" id="forgotBtn">Forgot password?</a>
+
+          <button type="submit" class="btn-submit">Sign In</button>
+
+          <div class="or-divider"><span>or</span></div>
+
+          <button type="button" class="google-btn" id="google">
+            <span class="google-icon">G</span>
+            Continue with Google
+          </button>
+        </form>
+
+        <div class="signup-prompt">
+          Don't have an account?
+          <a href="./signup.html">
+     <label for="reg-toggle" class="toggle-link">Sign up</label>
+
+          </a>
+        </div>
+      </div>
+
+      <!-- Signup View -->
+      <div class="form-view" id="signup-view">
+        <div class="header">
+          <div class="decorative-dot"></div>
+          <div class="title">Create Account</div>
+          <p class="subtitle">Join us to get started.</p>
+        </div>
+
+        <form>
+          <div class="input-group">
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Full Name"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="input-group">
+            <input
+              type="email"
+              class="input-field"
+              placeholder="Email address"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="input-group">
+            <input
+              type="password"
+              class="input-field"
+              placeholder="Password"
+              required
+              autocomplete="new-password"
+            />
+          </div>
+
+         <a href="./signup.html">
+           <button type="submit" class="btn-submit">Sign Up</button>
+         </a>
+
+          <div class="or-divider"><span>or</span></div>
+
+          <button type="button" class="google-btn">
+            <span class="google-icon">G</span>
+            Continue with Google
+          </button>
+        </form>
+
+        <div class="signup-prompt">
+          Already have an account?
+          <label for="reg-toggle" class="toggle-link" id="signin">Sign in</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
+
+<script type="module" src="./index.js"></script>
+
+</body>
+</html>
